@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import React from 'react'
 import './App.css'
+import ModalDialog from './components/ModalDialog'
 
 
 // MUI IMPORTS
@@ -55,11 +56,23 @@ function App() {
     });
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <form onSubmit={handleSubmit}>
         <Grid2 container spacing={2}>
-          <Grid2 size={{ xs: 12, sm: 6, md: 5 }}>
+          <Grid2 size={{ xs: 12, sm: 6, md: 5, lg:5 }}>
             <TextField
               id="nombre"
               name="nombre"
@@ -71,7 +84,7 @@ function App() {
               onChange={handleChange}
             />
           </Grid2>
-          <Grid2 size={{ xs: 12, sm: 6, md: 5 }}>
+          <Grid2 size={{ xs: 12, sm: 6, md: 5, lg:5 }}>
             <TextField
               id="apellidos"
               name="apellidos"
@@ -83,7 +96,7 @@ function App() {
               onChange={handleChange}
             />
           </Grid2>
-          <Grid2 size={{ xs: 12, sm: 12, md: 2 }}>
+          <Grid2 size={{ xs: 12, sm: 12, md: 2, lg:2 }}>
             <TextField
               id="edad"
               name="edad"
@@ -97,7 +110,7 @@ function App() {
             />
           </Grid2>
 
-          <Grid2 size={{ xs: 12, sm: 6, md: 5 }}>
+          <Grid2 size={{ xs: 12, sm: 6, md: 5, lg:5 }}>
             <FormLabel component="legend">Género</FormLabel>
             <RadioGroup
               row
@@ -114,7 +127,7 @@ function App() {
             </RadioGroup>
           </Grid2>
 
-          <Grid2 size={{ xs: 12, sm: 6, md: 7 }}>
+          <Grid2 size={{ xs: 12, sm: 6, md: 7, lg:7 }}>
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Lenguaje de programación favorito</InputLabel>
@@ -133,7 +146,7 @@ function App() {
               </FormControl>
             </Box>
           </Grid2>
-          <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
+          <Grid2 size={{ xs: 12, sm: 12, md: 12, lg:12 }}>
             <FormControlLabel
               control={
                 <Rating
@@ -150,7 +163,7 @@ function App() {
               sx={{ display: 'flex', justifyContent: 'flex-end', gap: 3 }}
             />
           </Grid2>
-          <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
+          <Grid2 size={{ xs: 12, sm: 12, md: 12, lg:12}}>
             <FormControlLabel
               required
               control={<Checkbox name="termsAccepted" checked={data.termsAccepted} onChange={handleChange} />}
@@ -159,11 +172,12 @@ function App() {
             />
           </Grid2>
 
-          <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
+          <Grid2 size={{ xs: 12, sm: 12, md: 12, lg:12 }}>
             <ButtonGroup variant="contained" aria-label="Basic button group" fullWidth>
-              <Button variant='contained' type="submit">ENVIAR</Button>
+              <Button variant='contained' onClick={handleClickOpen} type="submit" disabled={!data.termsAccepted}>ENVIAR</Button>
               <Button variant='outlined' onClick={handleClear} color="primary">LIMPIAR</Button>
             </ButtonGroup>
+            <ModalDialog open={open} handleClose={handleClose}/>
           </Grid2>
         </Grid2>
       </form>
