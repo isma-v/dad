@@ -18,13 +18,13 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function ModalDialog({handleClose, open}) {
+export default function ModalDialog({ handleClose, open }) {
 
 
   return (
     <React.Fragment>
-     
-     <Dialog
+
+      <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
