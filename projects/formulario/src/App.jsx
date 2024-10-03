@@ -106,6 +106,7 @@ function App() {
               sx={{ display: 'flex', justifyContent: 'space-around', gap: 3 }}
               value={data.genero}
               onChange={handleChange}
+              required
             >
               <FormControlLabel value={genderData.femenino} control={<Radio />} label="Femenino" />
               <FormControlLabel value={genderData.masculino} control={<Radio />} label="Masculino" />
@@ -136,6 +137,7 @@ function App() {
             <FormControlLabel
               control={
                 <Rating
+                  required
                   name="rating"
                   value={data.rating}
                   onChange={(event, newValue) => {
@@ -150,6 +152,7 @@ function App() {
           </Grid2>
           <Grid2 size={{ xs: 12, sm: 12, md: 12 }}>
             <FormControlLabel
+              required
               control={<Checkbox name="termsAccepted" checked={data.termsAccepted} onChange={handleChange} />}
               label="He leído los términos y condiciones"
               sx={{ display: 'flex', justifyContent: 'flex-start' }}
