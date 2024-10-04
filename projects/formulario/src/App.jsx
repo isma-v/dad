@@ -41,6 +41,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setOpen(true); 
     console.log(data); // Mostrar los datos en la consola
   };
 
@@ -111,7 +112,10 @@ function App() {
           </Grid2>
 
           <Grid2 size={{ xs: 12, sm: 6, md: 5, lg:5 }}>
+          <FormControl fullWidth>
             <FormLabel component="legend">Género</FormLabel>
+            
+
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
@@ -119,12 +123,13 @@ function App() {
               sx={{ display: 'flex', justifyContent: 'space-around', gap: 3 }}
               value={data.genero}
               onChange={handleChange}
-              required
+              
             >
-              <FormControlLabel value={genderData.femenino} control={<Radio />} label="Femenino" />
-              <FormControlLabel value={genderData.masculino} control={<Radio />} label="Masculino" />
-              <FormControlLabel value={genderData.otro} control={<Radio />} label="Otro" />
+              <FormControlLabel required value={genderData.femenino} control={<Radio />} label="Femenino" />
+              <FormControlLabel required value={genderData.masculino} control={<Radio />} label="Masculino" />
+              <FormControlLabel required value={genderData.otro} control={<Radio />} label="Otro" />
             </RadioGroup>
+            </FormControl>
           </Grid2>
 
           <Grid2 size={{ xs: 12, sm: 6, md: 7, lg:7 }}>
@@ -147,10 +152,13 @@ function App() {
             </Box>
           </Grid2>
           <Grid2 size={{ xs: 12, sm: 12, md: 12, lg:12 }}>
+          <FormControl fullWidth>
+
             <FormControlLabel
+       
               control={
                 <Rating
-                  required
+                required
                   name="rating"
                   value={data.rating}
                   onChange={(event, newValue) => {
@@ -162,11 +170,12 @@ function App() {
               labelPlacement='start'
               sx={{ display: 'flex', justifyContent: 'flex-end', gap: 3 }}
             />
+            </FormControl>
           </Grid2>
           <Grid2 size={{ xs: 12, sm: 12, md: 12, lg:12}}>
             <FormControlLabel
-              required
-              control={<Checkbox name="termsAccepted" checked={data.termsAccepted} onChange={handleChange} />}
+              
+              control={<Checkbox required name="termsAccepted" checked={data.termsAccepted} onChange={handleChange} />}
               label="He leído los términos y condiciones"
               sx={{ display: 'flex', justifyContent: 'flex-start' }}
             />
@@ -174,7 +183,7 @@ function App() {
 
           <Grid2 size={{ xs: 12, sm: 12, md: 12, lg:12 }}>
             <ButtonGroup variant="contained" aria-label="Basic button group" fullWidth>
-              <Button variant='contained' onClick={handleClickOpen} type="submit" disabled={!data.termsAccepted}>ENVIAR</Button>
+              <Button variant='contained' onSubmit={handleClickOpen} type="submit" disabled={!data.termsAccepted}>ENVIAR</Button>
               <Button variant='outlined' onClick={handleClear} color="primary">LIMPIAR</Button>
             </ButtonGroup>
             <ModalDialog open={open} handleClose={handleClose}/>
