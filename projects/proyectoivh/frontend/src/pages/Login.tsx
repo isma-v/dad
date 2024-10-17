@@ -3,12 +3,13 @@ import { Button, Container, Typography } from "@mui/material";
 function Login() {
     return (
         <>
-            <Typography variant="h1" component="h2">
+        <header>
+        <Typography variant="h1" component="h2">
                 Ismael Valerón Hernández
             </Typography>
-
-
-            <Container>
+        </header>
+        <main>
+        <Container>
                 <Typography variant="h1" component="h2">
                     Ismael Valerón Hernández
                 </Typography>
@@ -31,6 +32,11 @@ function Login() {
                 <Button variant="contained" color="error">Text</Button>
                 <Button variant="outlined" color="success">Text</Button>
             </Container>
+        </main>
+        
+
+
+           
         </>
     );
 }
